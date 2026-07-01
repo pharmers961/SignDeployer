@@ -58,7 +58,11 @@
   .btn.primary:hover{ opacity:1; box-shadow:0 6px 18px rgba(16,42,67,0.28); }
   .btn.lg{ padding:15px 26px; font-size:13px; }
   .btn.block{ display:block; width:100%; text-align:center; }
-  .btn:focus-visible, .linkbtn:focus-visible{ outline:3px solid #2b6cb0; outline-offset:2px; }
+  .btn:focus-visible, .linkbtn:focus-visible, a:focus-visible, .nav-links a:focus-visible{ outline:3px solid #2b6cb0; outline-offset:2px; border-radius:3px; }
+  /* Skip link: visible on keyboard focus, off-screen otherwise (WCAG 2.4.1) */
+  .skip-link{ position:absolute; left:-9999px; top:0; z-index:200; background:var(--ink); color:#fff;
+    padding:10px 16px; border-radius:0 0 6px 0; font-size:13px; font-weight:600; }
+  .skip-link:focus{ left:0; }
   /* Button that looks like a footer/nav text link (real <button> for a11y) */
   .linkbtn{ background:none; border:none; cursor:pointer; font:inherit; color:inherit;
     padding:0; text-decoration:underline; }
@@ -224,6 +228,7 @@
 <script>document.documentElement.className += ' js';</script>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <!-- ===================== NAV ===================== -->
 <header class="nav">
@@ -243,6 +248,7 @@
 </header>
 
 <!-- ===================== HERO ===================== -->
+<main id="main-content" tabindex="-1">
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
@@ -403,11 +409,13 @@
   </div>
 </section>
 
+</main>
+
 <!-- ===================== FOOTER ===================== -->
 <footer>
   <div class="wrap foot-inner">
     <div>© <span id="year"></span> SignDeployer. All rights reserved.</div>
-    <div><a href="#pricing" class="link">Pricing</a> · <a href="#contact" class="link">Contact</a> · <a href="/terms.html" class="link">Terms</a> · <a href="/privacy.html" class="link">Privacy</a> · <button id="footLogin" class="linkbtn" type="button">Sign in</button></div>
+    <div><a href="#pricing" class="link">Pricing</a> · <a href="#contact" class="link">Contact</a> · <a href="/terms.html" class="link">Terms</a> · <a href="/privacy.html" class="link">Privacy</a> · <button class="linkbtn" type="button" data-sd-privacy-choices>Your Privacy Choices</button> · <button id="footLogin" class="linkbtn" type="button">Sign in</button></div>
   </div>
 </footer>
 
@@ -456,6 +464,7 @@
 </script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script>
 <script src="assets/js/config.js"></script>
+<script src="assets/js/consent.js"></script>
 <script src="assets/js/landing.js"></script>
 </body>
 </html>

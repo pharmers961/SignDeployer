@@ -30,6 +30,17 @@
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{height:100%}
+  /* Skip link: visible only on keyboard focus (WCAG 2.4.1) */
+  .skip-link{ position:absolute; left:-9999px; top:0; z-index:2147483002; background:var(--ink); color:#fff;
+    padding:10px 16px; font-size:13px; font-weight:600; border-radius:0 0 6px 0; }
+  .skip-link:focus{ left:0; }
+  :focus-visible{ outline:3px solid #2b6cb0; outline-offset:2px; }
+  /* Privacy choices link in the sidebar */
+  .panel-legal{ margin-top:auto; padding:14px 26px 18px; border-top:1px solid var(--line);
+    font-size:11px; color:var(--muted); }
+  .panel-legal a, .panel-legal button{ color:var(--muted); text-decoration:underline; }
+  .panel-legal button{ background:none; border:none; font:inherit; cursor:pointer; padding:0; }
+  .panel-legal button:hover, .panel-legal a:hover{ color:var(--ink); }
   body{
     font-family:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
     background:var(--paper);
@@ -432,6 +443,7 @@
 </style>
 </head>
 <body>
+<a class="skip-link" href="#addr">Skip to address search</a>
 
 <aside class="panel">
   <div class="brand">
@@ -490,6 +502,11 @@
 
     <div class="results" id="results"></div>
     <div class="nav" id="nav"></div>
+  </div>
+
+  <div class="panel-legal">
+    <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> ·
+    <button type="button" data-sd-privacy-choices>Your Privacy Choices</button>
   </div>
 </aside>
 
@@ -602,17 +619,31 @@ let selectedCoord = null; // set when user picks an autocomplete suggestion
 // Initialize the map as soon as a valid-looking token is present, so the
 // user sees a real map instead of a confusing grey box. Surfaces load errors
 // as visible status text instead of failing silently.
+// Honor the visitor's Analytics consent for Mapbox usage telemetry
+// (events.mapbox.com). Off by default until they opt in; re-applied whenever
+// the consent choice changes.
+function applyMapTelemetryConsent(){
+  // Privacy-safe default: telemetry stays OFF unless the visitor has explicitly
+  // allowed the Analytics category via the consent manager.
+  var allow = !!(window.sdConsent && window.sdConsent.allowed('analytics'));
+  try { if (typeof mapboxgl !== 'undefined' && typeof mapboxgl.setTelemetryEnabled === 'function') mapboxgl.setTelemetryEnabled(allow); } catch(e){}
+  return allow;
+}
+document.addEventListener('sd-consent-change', applyMapTelemetryConsent);
+
 function ensureMap(token){
   if(map) return true;
   if(!token || !token.startsWith('pk.')) return false;
   mapboxgl.accessToken = token;
+  var analyticsOK = applyMapTelemetryConsent();
   try{
     map = new mapboxgl.Map({
       container:'map',
       style:'mapbox://styles/mapbox/light-v11', // clean light basemap; verify URL in current Mapbox docs
       center:[-98.5, 39.8], // continental US default until an address is set
       zoom:3.2,
-      preserveDrawingBuffer:true // allows capturing the map image for the printed route sheet
+      preserveDrawingBuffer:true, // allows capturing the map image for the printed route sheet
+      collectResourceTiming: analyticsOK // no performance telemetry unless Analytics is allowed
     });
     map.on('error', e => {
       const msg = (e && e.error && e.error.message) ? e.error.message : 'Map failed to load.';
@@ -1556,6 +1587,7 @@ $('go').addEventListener('click', async () => {
      anyone not signed in / not subscribed is sent back to the landing page. -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script>
 <script src="assets/js/config.js"></script>
+<script src="assets/js/consent.js"></script>
 <script src="assets/js/app-guard.js"></script>
 </body>
 </html>
