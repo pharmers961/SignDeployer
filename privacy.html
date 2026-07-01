@@ -9,12 +9,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<!-- NOTE TO OWNER: this is a sensible starting point, not legal advice.
-     Have an attorney review it before relying on it. -->
+<!-- NOTE TO OWNER: this is a sensible, CCPA/CPRA-aware starting point, not legal
+     advice. Have a California-licensed attorney review it before relying on it,
+     and keep the "categories collected / disclosed" tables in sync with what the
+     site actually does. -->
 <style>
   :root{ --ink:#102a43; --muted:#5a6b7b; --line:#dde6ef; --soft:#f4f7fb; }
   *{ box-sizing:border-box; }
   body{ margin:0; font-family:"Montserrat",system-ui,sans-serif; color:var(--ink); background:#fff; line-height:1.65; }
+  .skip-link{ position:absolute; left:-9999px; top:0; z-index:200; background:var(--ink); color:#fff;
+    padding:10px 16px; border-radius:0 0 6px 0; font-size:13px; font-weight:600; }
+  .skip-link:focus{ left:0; }
   .top{ background:#fff; border-bottom:1px solid var(--line); }
   .top .wrap{ max-width:760px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; }
   .brand{ font-weight:800; letter-spacing:1.5px; text-transform:uppercase; font-size:16px; display:flex; align-items:center; gap:9px; color:inherit; text-decoration:none; }
@@ -22,97 +27,258 @@
   .mark svg{ width:13px; height:13px; }
   main{ max-width:760px; margin:0 auto; padding:40px 24px 80px; }
   h1{ font-size:30px; letter-spacing:-.5px; margin:0 0 6px; }
-  .updated{ color:var(--muted); font-size:13px; margin-bottom:30px; }
-  h2{ font-size:18px; margin:34px 0 10px; }
+  .updated{ color:var(--muted); font-size:13px; margin-bottom:26px; }
+  h2{ font-size:19px; margin:36px 0 10px; }
+  h3{ font-size:15px; margin:20px 0 6px; }
   p, li{ font-size:15px; color:#2a3f52; }
   a{ color:var(--ink); font-weight:600; }
-  table{ width:100%; border-collapse:collapse; font-size:14px; margin:10px 0; }
+  table{ width:100%; border-collapse:collapse; font-size:13.5px; margin:12px 0; }
   th, td{ text-align:left; padding:9px 10px; border-bottom:1px solid var(--line); vertical-align:top; }
   th{ font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); }
+  .callout{ background:var(--soft); border:1px solid var(--line); border-left:4px solid var(--ink);
+    border-radius:0 8px 8px 0; padding:16px 18px; margin:18px 0; }
+  .callout h2{ margin-top:0; }
+  .choices-btn{ display:inline-block; cursor:pointer; font:inherit; font-weight:700; font-size:13px;
+    letter-spacing:.4px; background:linear-gradient(180deg,#1b3b5f,#102a43); color:#fff; border:1px solid #102a43;
+    border-radius:6px; padding:11px 18px; margin-top:10px; text-decoration:none; }
+  .choices-btn:hover{ opacity:.9; }
+  a:focus-visible, button:focus-visible{ outline:3px solid #2b6cb0; outline-offset:2px; border-radius:4px; }
   footer{ border-top:1px solid var(--line); padding:26px 0; text-align:center; color:var(--muted); font-size:13px; }
+  footer button{ background:none; border:none; font:inherit; color:inherit; cursor:pointer; text-decoration:underline; padding:0; }
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <div class="top"><div class="wrap">
   <a class="brand" href="/"><span class="mark"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" fill="#fff"/><circle cx="12" cy="9" r="2.4" fill="#102a43"/></svg></span> SignDeployer</a>
   <a href="/terms.html" style="font-size:13px;font-weight:600;">Terms of Service →</a>
 </div></div>
 
-<main>
+<main id="main-content" tabindex="-1">
   <h1>Privacy Policy</h1>
-  <div class="updated">Last updated: June 10, 2026</div>
+  <div class="updated">Last updated: July 1, 2026 · Effective: July 1, 2026</div>
 
-  <p>This policy explains what SignDeployer ("we") collects, why, and what we do with
-  it. The short version: we collect what's needed to run a paid sign-placement tool —
-  your email, your subscription status, and the listings you choose to save — and we
-  don't sell any of it.</p>
+  <p>This policy explains what SignDeployer ("we," "us," "our") collects, why, who we
+  share it with, and the rights you have — with specific attention to the California
+  Consumer Privacy Act as amended by the California Privacy Rights Act (together, the
+  "CCPA/CPRA"). The short version: we collect only what's needed to run a paid
+  sign-placement tool — your email, your subscription status, and the listings you
+  choose to save — <b>we do not sell or share your personal information, and we do not
+  use advertising trackers.</b></p>
 
-  <h2>1. What we collect</h2>
+  <!-- ============= CALIFORNIA RIGHTS + CHOICES ============= -->
+  <div class="callout">
+    <h2 style="border:0;padding:0;">Your California privacy choices</h2>
+    <p>If you are a California resident, you have the right to know, delete, and correct
+    the personal information we hold, to opt out of the "sale" or "sharing" of personal
+    information, and to limit the use of sensitive personal information. You will never
+    be treated differently for exercising these rights.</p>
+    <p><b>We do not sell or share your personal information</b> (including for
+    cross-context behavioral advertising), so there is nothing to opt out of on that
+    front. You can still control optional cookies and analytics at any time:</p>
+    <button type="button" class="choices-btn" data-sd-privacy-choices>Your Privacy Choices — manage cookies &amp; tracking</button>
+    <p style="margin-bottom:0;font-size:13.5px;">We also honor the
+    <b>Global Privacy Control (GPC)</b> browser signal: if your browser sends it, we
+    treat it as a valid request to opt out of sharing and keep optional analytics off.</p>
+  </div>
+
+  <h2>1. Who we are</h2>
+  <p>SignDeployer is a sign-placement tool for real-estate professionals, operated from
+  California and available at signdeployer.com. For privacy questions or to exercise
+  your rights, contact us at <a href="mailto:hello@signdeployer.com">hello@signdeployer.com</a>.</p>
+
+  <h2>2. Notice at collection — what we collect and why</h2>
+  <p>In the last 12 months we have collected the following categories of personal
+  information (using the categories defined in Cal. Civ. Code § 1798.140). For each, we
+  describe what it is, why we use it, and how long we keep it. <b>We disclose data only to
+  the service providers listed in Section 5, and we do not sell or share any category.</b></p>
   <table>
-    <thead><tr><th>Data</th><th>When</th><th>Why</th></tr></thead>
+    <thead><tr><th>CCPA category</th><th>Examples we collect</th><th>Purpose</th><th>Retention</th></tr></thead>
     <tbody>
-      <tr><td>Email address</td><td>When you sign in (one-time email link)</td><td>Your account identity and sign-in</td></tr>
-      <tr><td>Name, company name, phone, team size</td><td>If you buy a Brokerage plan</td><td>Setting up your team account and contacting you about it</td></tr>
-      <tr><td>Subscription status</td><td>From our payment processor</td><td>Knowing whether to unlock the app</td></tr>
-      <tr><td>Saved listing addresses</td><td>When you click "Save this open house"</td><td>Syncing your saved listings across your devices</td></tr>
-      <tr><td>Searched addresses</td><td>When you run a search</td><td>Sent to Mapbox to compute the sign plan; recent results are also cached in your own browser</td></tr>
-      <tr><td>IP address (hashed)</td><td>When you use the free demo</td><td>Rate-limiting to prevent abuse; we store a one-way hash, not the IP itself</td></tr>
-      <tr><td>Company logo/branding</td><td>If a brokerage owner uploads one</td><td>Displaying your branding to your team</td></tr>
+      <tr>
+        <td>Identifiers</td>
+        <td>Email address; account ID; a one-way <i>hashed</i> IP address (free demo only, never the raw IP)</td>
+        <td>Account identity and sign-in; rate-limiting the demo to prevent abuse</td>
+        <td>While your account exists; demo hashes are short-lived</td>
+      </tr>
+      <tr>
+        <td>Customer records</td>
+        <td>Name, company/brokerage name, phone, team size (Brokerage plans only)</td>
+        <td>Setting up your team account and contacting you about it</td>
+        <td>While your account exists</td>
+      </tr>
+      <tr>
+        <td>Commercial information</td>
+        <td>Subscription/plan status and billing records (from Stripe)</td>
+        <td>Unlocking paid features; tax and accounting</td>
+        <td>As required by tax/accounting law</td>
+      </tr>
+      <tr>
+        <td>Internet / electronic activity</td>
+        <td>Saved and searched listing addresses; app settings; anonymous usage/performance measurements (only if you allow Analytics)</td>
+        <td>Syncing your saved listings; computing sign plans; understanding and improving performance</td>
+        <td>Saved listings until you delete them; caches live in your own browser</td>
+      </tr>
+      <tr>
+        <td>Geolocation (approximate)</td>
+        <td>The listing addresses you type — these are property locations, not your device location</td>
+        <td>Sent to Mapbox to geocode and compute the sign plan</td>
+        <td>Not retained by us beyond your saved listings and browser cache</td>
+      </tr>
+      <tr>
+        <td>Visual information</td>
+        <td>Company logo/branding, if a brokerage owner uploads one</td>
+        <td>Displaying your branding to your team</td>
+        <td>While your account exists or until you remove it</td>
+      </tr>
     </tbody>
   </table>
-  <p><b>Payment details:</b> handled entirely by Stripe. Your card number never touches
-  our servers.</p>
+  <p><b>Payment details:</b> your card number is handled entirely by Stripe and never
+  touches our servers.</p>
+  <p>We do <b>not</b> knowingly collect: government IDs, biometric data, precise device
+  geolocation, health information, or the contents of your communications.</p>
 
-  <h2>2. What we don't do</h2>
+  <h2>3. Sensitive personal information</h2>
+  <p>We do <b>not</b> collect or process sensitive personal information (such as
+  government identifiers, precise geolocation of your device, race, religion, health,
+  sexual orientation, or account log-in credentials combined with access codes) for the
+  purpose of inferring characteristics about you. Because we don't use it beyond what is
+  necessary to provide the Service, the "right to limit" has nothing to restrict — but
+  you can still contact us with any concern.</p>
+
+  <h2>4. Sources of the information</h2>
+  <p>We collect the information above <b>directly from you</b> (when you sign in, buy a
+  plan, run a search, or save a listing), <b>automatically from your device</b> (basic
+  request data and, only with your consent, anonymous usage measurements), and <b>from
+  our service providers</b> (for example, subscription status from Stripe).</p>
+
+  <h2>5. Who we disclose it to (service providers)</h2>
+  <p>We share personal information only with vendors who process it on our behalf under
+  contracts that prohibit them from using it for their own purposes. These are
+  "service providers"/"contractors" under the CCPA — not sales.</p>
+  <table>
+    <thead><tr><th>Provider</th><th>What they handle</th></tr></thead>
+    <tbody>
+      <tr><td>Supabase</td><td>Account database and saved listings</td></tr>
+      <tr><td>Netlify</td><td>Website and serverless hosting</td></tr>
+      <tr><td>Stripe</td><td>Payment processing and subscription billing</td></tr>
+      <tr><td>Mapbox</td><td>Maps, address geocoding, and routing; anonymous map usage telemetry (only if you allow Analytics)</td></tr>
+      <tr><td>Email delivery provider</td><td>Sending one-time sign-in links</td></tr>
+      <tr><td>Google Fonts</td><td>Serving the site's typeface (receives your IP as part of the request)</td></tr>
+    </tbody>
+  </table>
+  <p>We may also disclose information if required by law, to protect our rights or users'
+  safety, or in connection with a merger or acquisition (in which case this policy
+  continues to govern your information).</p>
+
+  <h2>6. We do not sell or share your personal information</h2>
+  <p>We have <b>not</b> sold personal information and have <b>not</b> shared it for
+  cross-context behavioral advertising in the preceding 12 months, and we have no plans
+  to. We do not use third-party advertising networks or ad-tech trackers. We also do not
+  sell or share the personal information of minors under 16.</p>
+
+  <h2>7. How we use the information</h2>
   <ul>
-    <li>We don't sell or rent your personal information.</li>
-    <li>We don't use advertising trackers or third-party ad networks.</li>
-    <li>We don't read your saved listings for any purpose other than showing them to you.</li>
+    <li>Provide, secure, and operate the Service (sign-in, computing sign plans, saving your listings).</li>
+    <li>Process payments and manage your subscription.</li>
+    <li>Prevent fraud and abuse (e.g., demo rate-limiting).</li>
+    <li>Respond to your requests and provide support.</li>
+    <li>Comply with legal, tax, and accounting obligations.</li>
+    <li>With your consent, measure and improve performance.</li>
   </ul>
 
-  <h2>3. Where your data lives</h2>
-  <p>Account data and saved listings are stored with Supabase (our database provider).
-  The site is hosted on Netlify. Payments are processed by Stripe. Address searches are
-  processed by Mapbox to compute results. Sign-in emails are delivered via our email
-  provider. Each of these processors has its own security and privacy program.</p>
+  <h2>8. Cookies, local storage, and tracking</h2>
+  <p>We use a small number of cookies and similar technologies (including your browser's
+  local storage). They fall into three groups, and you control the optional ones:</p>
+  <ul>
+    <li><b>Strictly necessary</b> — keep you signed in (Supabase session), secure forms,
+    and remember your privacy choices. These are always on because the site can't work
+    without them.</li>
+    <li><b>Functional</b> (optional) — remember your recent searches, settings, and a
+    local cache of results so repeat searches are instant. Stored only in your browser.</li>
+    <li><b>Analytics</b> (optional) — let us and Mapbox collect anonymous usage/performance
+    measurements. Off unless you turn them on.</li>
+  </ul>
+  <p>We do not use advertising cookies or third-party ad networks. Manage your choices any
+  time with the <b>Your Privacy Choices</b> link in the footer of every page, or here:</p>
+  <p><button type="button" class="choices-btn" data-sd-privacy-choices>Manage cookies &amp; tracking</button></p>
+  <p>Clearing your browser storage removes local caches and your saved consent choice;
+  saved listings remain in your account.</p>
 
-  <h2>4. Cookies and local storage</h2>
-  <p>We don't use advertising cookies. Your browser's local storage holds your sign-in
-  session (via Supabase), your recent searches and settings, and a cache of results so
-  repeat searches are instant. Clearing your browser storage removes these; saved
-  listings remain in your account.</p>
+  <h2>9. Your rights and how to exercise them</h2>
+  <p>Depending on where you live (California and several other states grant similar
+  rights), you may have the right to:</p>
+  <ul>
+    <li><b>Know / access</b> the personal information we have collected about you, and how
+    we've used and disclosed it.</li>
+    <li><b>Delete</b> personal information we hold about you.</li>
+    <li><b>Correct</b> inaccurate personal information.</li>
+    <li><b>Opt out</b> of any "sale" or "sharing" of personal information (we don't do
+    either).</li>
+    <li><b>Limit</b> the use of sensitive personal information (we don't use it beyond
+    what's necessary).</li>
+    <li><b>Non-discrimination</b> — we will not deny service, charge different prices, or
+    provide a different quality of service because you exercised a right.</li>
+  </ul>
+  <h3>How to submit a request</h3>
+  <p>Email <a href="mailto:hello@signdeployer.com">hello@signdeployer.com</a> with the
+  right you want to exercise. You can also delete your profile and saved listings yourself
+  from <b>Account → Delete account</b>, and cancel billing from <b>Account → Manage
+  billing</b>.</p>
+  <h3>Verification &amp; timing</h3>
+  <p>To protect your data, we verify requests using the email address associated with your
+  account (for account holders, we may send a confirmation to that email). We aim to
+  confirm receipt within 10 business days and to respond within 45 days, extendable by a
+  further 45 days where permitted, and we'll tell you if we need the extra time.</p>
+  <h3>Authorized agents</h3>
+  <p>You may use an authorized agent to submit a request. We may ask the agent for proof
+  of your written permission and may still ask you to verify your identity directly.</p>
+  <h3>Appeals</h3>
+  <p>If we decline your request, you may appeal by replying to our decision or emailing
+  <a href="mailto:hello@signdeployer.com">hello@signdeployer.com</a> with "Privacy Appeal"
+  in the subject. If you are a California resident and have concerns, you may also contact
+  the California Privacy Protection Agency or the California Attorney General.</p>
 
-  <h2>5. How long we keep data</h2>
+  <h2>10. California "Shine the Light"</h2>
+  <p>California Civil Code § 1798.83 lets California residents ask about personal
+  information shared with third parties for their direct-marketing purposes. <b>We do not
+  share personal information with third parties for their own direct marketing</b>, so no
+  such disclosures are made.</p>
+
+  <h2>11. Where your data lives</h2>
+  <p>Account data and saved listings are stored with Supabase; the site is hosted on
+  Netlify; payments are processed by Stripe; address searches are processed by Mapbox;
+  sign-in emails are delivered via our email provider. Each processor maintains its own
+  security and privacy program.</p>
+
+  <h2>12. Security</h2>
+  <p>Sign-in uses one-time email links (no passwords to leak). Access to paid features is
+  verified server-side on every request. Database access is restricted with row-level
+  security so each user can only read their own records. Secrets and API keys are stored
+  in server environment variables, not in the site's code. The site is served over HTTPS
+  with strict transport security.</p>
+
+  <h2>13. How long we keep data</h2>
   <p>Account data is kept while your account exists. Saved listings are kept until you
-  delete them. Demo rate-limit hashes are short-lived operational records. Billing
-  records are retained as required for tax and accounting purposes.</p>
+  delete them. Demo rate-limit hashes are short-lived operational records. Billing records
+  are retained as required for tax and accounting purposes. When you delete your account,
+  we remove your profile and saved listings, except where we're required to keep certain
+  records by law.</p>
 
-  <h2>6. Your choices</h2>
-  <ul>
-    <li><b>Access or delete your data:</b> email <a href="mailto:hello@signdeployer.com">hello@signdeployer.com</a>
-    and we'll handle it. Deleting your account removes your profile and saved listings.</li>
-    <li><b>Cancel billing:</b> Account → Manage billing, any time.</li>
-    <li><b>Team members:</b> if a brokerage added you, the brokerage owner can remove
-    you, or you can ask us to detach your account.</li>
-  </ul>
+  <h2>14. Children</h2>
+  <p>The Service is for working real-estate professionals and is not directed at children
+  under 16. We do not knowingly collect personal information from children under 16, and
+  we do not sell or share it.</p>
 
-  <h2>7. Security</h2>
-  <p>Sign-in uses one-time email links (no passwords to leak). Access to paid features
-  is verified server-side on every request. Database access is restricted with
-  row-level security so each user can only read their own records. Secrets and API keys
-  are stored in server environment variables, not in the site's code.</p>
+  <h2>15. Changes</h2>
+  <p>If we materially change this policy, we'll update this page and the "Last updated"
+  date above, and — where required — re-prompt you for consent.</p>
 
-  <h2>8. Children</h2>
-  <p>The Service is for working real-estate professionals and is not directed at
-  children under 16.</p>
-
-  <h2>9. Changes</h2>
-  <p>If we materially change this policy, we'll update this page and the date above.</p>
-
-  <h2>10. Contact</h2>
+  <h2>16. Contact</h2>
   <p>Privacy questions or requests: <a href="mailto:hello@signdeployer.com">hello@signdeployer.com</a></p>
 </main>
 
-<footer>© SignDeployer · <a href="/">Home</a> · <a href="/terms.html">Terms of Service</a></footer>
+<footer>© SignDeployer · <a href="/">Home</a> · <a href="/terms.html">Terms of Service</a> · <button type="button" data-sd-privacy-choices>Your Privacy Choices</button></footer>
+<script src="assets/js/consent.js"></script>
 </body>
 </html>
