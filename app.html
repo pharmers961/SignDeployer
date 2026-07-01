@@ -7,13 +7,11 @@
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
 
 <!-- Mapbox GL JS. Verify the latest version against current Mapbox docs before relying on it. -->
-<link href="https://api.mapbox.com/mapbox-gl-js/v3.9.0/mapbox-gl.css" rel="stylesheet" />
-<script src="https://api.mapbox.com/mapbox-gl-js/v3.9.0/mapbox-gl.js"></script>
+<link href="assets/vendor/mapbox-gl.css" rel="stylesheet" />
+<script src="assets/vendor/mapbox-gl.js"></script>
 
 <!-- Montserrat: clean geometric sans for the SignDeployer wordmark -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="assets/css/fonts.css" rel="stylesheet">
 
 <style>
   :root{
@@ -487,7 +485,7 @@
 
     <div class="cta-row">
       <button class="go" id="go">Find <span id="goCount">6</span> sign spots</button>
-      <button type="button" id="infoBtn" class="info-btn" aria-expanded="false" aria-controls="howMore" title="How spots are chosen">i</button>
+      <button type="button" id="infoBtn" class="info-btn" aria-expanded="false" aria-controls="howMore" aria-label="How spots are chosen" title="How spots are chosen">i</button>
     </div>
     <div class="disclaimer" id="howMore" hidden>
       <b>How spots are chosen:</b> SignDeployer ranks corners by road size and the actual driving routes people take to reach the
@@ -505,12 +503,12 @@
   </div>
 
   <div class="panel-legal">
-    <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> ·
+    <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/accessibility.html">Accessibility</a> ·
     <button type="button" data-sd-privacy-choices>Your Privacy Choices</button>
   </div>
 </aside>
 
-<div id="map">
+<div id="map" role="main" aria-label="Map of suggested sign placements. Results are also listed as text in the sidebar.">
   <div class="map-empty" id="mapEmpty">
     <div class="card"><b>Your sign plan appears here</b>
     Enter the listing address, then “Find sign spots” — we’ll map the best corners and the driving route.</div>
@@ -1585,7 +1583,7 @@ $('go').addEventListener('click', async () => {
 
 <!-- This is the gated app. The guard requires an active subscription;
      anyone not signed in / not subscribed is sent back to the landing page. -->
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script>
+<script src="assets/vendor/supabase.js"></script>
 <script src="assets/js/config.js"></script>
 <script src="assets/js/consent.js"></script>
 <script src="assets/js/app-guard.js"></script>

@@ -16,9 +16,7 @@
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="SignDeployer — smarter open house sign placement" />
 <meta name="twitter:description" content="Map the best corners for your open house signs in seconds. Free live demo." />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="assets/css/fonts.css" rel="stylesheet">
 <style>
   :root{
     --ink:#102a43; --muted:#5a6b7b; --line:#dde6ef; --bg:#ffffff;
@@ -185,6 +183,8 @@
     letter-spacing:1.5px; text-transform:uppercase; padding:4px 10px; border-radius:20px; margin-bottom:6px; }
   .plan .price{ font-size:42px; font-weight:800; letter-spacing:-1px; margin:10px 0 2px; }
   .save-note{ font-size:12px; font-weight:700; color:#1b6b34; margin:2px 0 0; }
+  /* Auto-renewal disclosure (California ARL: clear + conspicuous, adjacent to the CTA) */
+  .renew-note{ font-size:11.5px; color:var(--muted); margin:10px 0 0; line-height:1.5; }
   .plan .price small{ font-size:15px; font-weight:600; color:var(--muted); letter-spacing:0; }
   .plan .seats{ font-size:13px; color:var(--muted); margin-bottom:18px; }
   .plan ul{ list-style:none; padding:0; margin:0 0 24px; flex:1; }
@@ -213,6 +213,11 @@
     color:var(--muted); margin:2px 0 6px; }
   .modal .close{ float:right; cursor:pointer; color:#999; background:none; border:none; font-size:20px;
     line-height:1; }
+  /* Visually hidden but available to screen readers (labels for the modal fields) */
+  .sr-only{ position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+    clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+  .modal .assent{ font-size:11.5px; color:var(--muted); margin:10px 0 0; }
+  .modal .assent a{ text-decoration:underline; font-weight:600; }
 
   /* ---------- Responsive ---------- */
   @media (max-width:880px){
@@ -234,7 +239,7 @@
 <header class="nav">
   <div class="wrap nav-inner">
     <a class="brand" href="/">
-      <span class="mark"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" fill="#fff"/><circle cx="12" cy="9" r="2.4" fill="#102a43"/></svg></span>
+      <span class="mark"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" fill="#fff"/><circle cx="12" cy="9" r="2.4" fill="#102a43"/></svg></span>
       SignDeployer
     </a>
     <nav class="nav-links">
@@ -270,7 +275,7 @@
       <div class="chrome"><i></i><i></i><i></i></div>
       <img src="assets/img/app-screenshot.svg" alt="SignDeployer app showing a listing with five ranked sign spots and an optimized driving route"
            onerror="this.style.display='none'; document.getElementById('mock').style.display='flex';" />
-      <div class="mock" id="mock" style="display:none">
+      <div class="mock" id="mock" style="display:none" aria-hidden="true">
         <div class="panel">
           <div class="band"><b>SignDeployer</b><span>Open House Sign Placement</span></div>
           <div class="form">
@@ -367,7 +372,7 @@
       <div class="plan">
         <div class="tag">Individual Agent</div>
         <div class="price" id="agentPrice">$49<small>/year</small></div>
-        <div class="save-note" id="agentSaveNote">✓ 2 months free vs paying monthly</div>
+        <div class="save-note" id="agentSaveNote">✓ Save $35 a year vs paying monthly</div>
         <div class="alt-price" id="agentAlt">Prefer monthly? $7/month — use the toggle above.</div>
         <div class="seats">For one solo agent</div>
         <ul>
@@ -377,6 +382,8 @@
           <li>Cancel anytime</li>
         </ul>
         <button class="btn primary block" id="agentCta" data-plan="agent" type="button">Get started — $49/year</button>
+        <p class="renew-note" id="agentRenew">Renews automatically at $49/year until you cancel. Cancel anytime in
+        Account → Manage billing; access continues to the end of the paid period.</p>
       </div>
 
       <div class="plan">
@@ -390,6 +397,8 @@
           <li>Priority support</li>
         </ul>
         <button class="btn primary block" data-plan="brokerage" type="button">Get started</button>
+        <p class="renew-note">Renews automatically at $499/year until you cancel. Cancel anytime in
+        Account → Manage billing; access continues to the end of the paid period.</p>
       </div>
 
     </div>
@@ -415,7 +424,7 @@
 <footer>
   <div class="wrap foot-inner">
     <div>© <span id="year"></span> SignDeployer. All rights reserved.</div>
-    <div><a href="#pricing" class="link">Pricing</a> · <a href="#contact" class="link">Contact</a> · <a href="/terms.html" class="link">Terms</a> · <a href="/privacy.html" class="link">Privacy</a> · <button class="linkbtn" type="button" data-sd-privacy-choices>Your Privacy Choices</button> · <button id="footLogin" class="linkbtn" type="button">Sign in</button></div>
+    <div><a href="#pricing" class="link">Pricing</a> · <a href="#contact" class="link">Contact</a> · <a href="/terms.html" class="link">Terms</a> · <a href="/privacy.html" class="link">Privacy</a> · <a href="/accessibility.html" class="link">Accessibility</a> · <button class="linkbtn" type="button" data-sd-privacy-choices>Your Privacy Choices</button> · <button id="footLogin" class="linkbtn" type="button">Sign in</button></div>
   </div>
 </footer>
 
@@ -429,9 +438,13 @@
       <p id="modalSub">Enter your email and we'll send you a secure sign-in link.</p>
       <form id="loginForm">
         <div id="bizFields" style="display:none">
+          <label class="sr-only" for="bizName">Company or brokerage name</label>
           <input id="bizName" type="text" placeholder="Company / brokerage name" autocomplete="organization" />
+          <label class="sr-only" for="bizContact">Your full name</label>
           <input id="bizContact" type="text" placeholder="Your full name" autocomplete="name" />
+          <label class="sr-only" for="bizPhone">Phone number</label>
           <input id="bizPhone" type="tel" placeholder="Phone number" autocomplete="tel" />
+          <label class="sr-only" for="bizTeam">Approximate team size</label>
           <select id="bizTeam">
             <option value="">Approx. team size…</option>
             <option>1–5 agents</option>
@@ -441,8 +454,11 @@
             <option>50+ agents</option>
           </select>
         </div>
+        <label class="sr-only" for="loginEmail">Email address</label>
         <input id="loginEmail" type="email" required placeholder="you@brokerage.com" autocomplete="email" />
         <button class="btn primary block" type="submit" id="loginSubmit">Email me a link</button>
+        <p class="assent">By continuing, you agree to our <a href="/terms.html">Terms of Service</a> (including its
+        arbitration provision) and acknowledge our <a href="/privacy.html">Privacy Policy</a>.</p>
       </form>
       <p id="loginMsg" style="min-height:18px;font-size:13px;margin-top:10px"></p>
     </div>
@@ -462,7 +478,7 @@
   els.forEach(function(e){ io.observe(e); });
 })();
 </script>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script>
+<script src="assets/vendor/supabase.js"></script>
 <script src="assets/js/config.js"></script>
 <script src="assets/js/consent.js"></script>
 <script src="assets/js/landing.js"></script>

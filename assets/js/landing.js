@@ -53,8 +53,15 @@
       if (note) note.style.display = isMonthly ? 'none' : '';
       const alt = document.getElementById('agentAlt');
       if (alt) alt.textContent = isMonthly
-        ? 'Switch to yearly ($49) and get 2 months free.'
+        ? 'Switch to yearly ($49) and save $35 a year.'
         : 'Prefer monthly? $7/month — use the toggle above.';
+      // Keep the auto-renewal disclosure accurate for the selected billing period
+      // (California ARL: the renewal price shown must match what will be charged).
+      const renew = document.getElementById('agentRenew');
+      if (renew) renew.textContent = (isMonthly
+        ? 'Renews automatically at $7/month until you cancel. '
+        : 'Renews automatically at $49/year until you cancel. ')
+        + 'Cancel anytime in Account → Manage billing; access continues to the end of the paid period.';
     };
     monthly.addEventListener('click', () => apply('monthly'));
     yearly.addEventListener('click', () => apply('yearly'));
