@@ -5,9 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Your account — SignDeployer</title>
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="assets/css/fonts.css" rel="stylesheet">
 <style>
   :root{ --ink:#102a43; --muted:#5a6b7b; --line:#dde6ef; --soft:#f4f7fb; --danger:#b00020; }
   *{ box-sizing:border-box; }
@@ -115,13 +113,13 @@
       <label for="brLogoFile">Logo</label>
       <input id="brLogoFile" type="file" accept="image/png,image/jpeg,image/webp" />
       <p class="muted" id="brUploadMsg" style="margin:6px 0 0">Upload a PNG, JPG, or WebP. It shows on the dark sidebar, so a white/light logo works best.</p>
-      <input id="brLogo" type="text" placeholder="…or paste an https:// logo URL" style="margin-top:8px" />
+      <input id="brLogo" type="text" placeholder="…or paste an https:// logo URL" aria-label="Logo image URL" style="margin-top:8px" />
     </div>
     <div class="field">
       <label for="brColor">Brand color</label>
       <div class="colorrow">
         <input id="brColor" type="color" value="#102a43" aria-label="Brand color picker" />
-        <input id="brColorHex" type="text" value="#102a43" style="width:120px;padding:10px;border:1px solid var(--line);border-radius:6px;font:inherit" />
+        <input id="brColorHex" type="text" value="#102a43" aria-label="Brand color hex value" style="width:120px;padding:10px;border:1px solid var(--line);border-radius:6px;font:inherit" />
       </div>
     </div>
     <div class="actions">
@@ -130,12 +128,12 @@
     <p class="msg" id="brMsg" role="status" aria-live="polite"></p>
   </div>
 
-  <p class="muted" style="text-align:center"><a class="inline" href="/app.html">Open app</a> · <a class="inline" href="mailto:hello@signdeployer.com">Support</a> · <a class="inline" href="/terms.html">Terms</a> · <a class="inline" href="/privacy.html">Privacy</a> · <button type="button" class="inline" data-sd-privacy-choices style="background:none;border:none;font:inherit;cursor:pointer;text-decoration:underline;padding:0;color:inherit">Your Privacy Choices</button></p>
+  <p class="muted" style="text-align:center"><a class="inline" href="/app.html">Open app</a> · <a class="inline" href="mailto:hello@signdeployer.com">Support</a> · <a class="inline" href="/terms.html">Terms</a> · <a class="inline" href="/privacy.html">Privacy</a> · <a class="inline" href="/accessibility.html">Accessibility</a> · <button type="button" class="inline" data-sd-privacy-choices style="background:none;border:none;font:inherit;cursor:pointer;text-decoration:underline;padding:0;color:inherit">Your Privacy Choices</button></p>
 </main>
 
 <div class="gatemsg" id="gate">Loading your account…</div>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.0/dist/umd/supabase.min.js"></script>
+<script src="assets/vendor/supabase.js"></script>
 <script src="assets/js/config.js"></script>
 <script src="assets/js/consent.js"></script>
 <script>

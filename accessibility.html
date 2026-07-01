@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Accessibility Statement — SignDeployer</title>
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
+<link href="assets/css/fonts.css" rel="stylesheet">
+<style>
+  :root{ --ink:#102a43; --muted:#5a6b7b; --line:#dde6ef; --soft:#f4f7fb; }
+  *{ box-sizing:border-box; }
+  body{ margin:0; font-family:"Montserrat",system-ui,sans-serif; color:var(--ink); background:#fff; line-height:1.65; }
+  .skip-link{ position:absolute; left:-9999px; top:0; z-index:200; background:var(--ink); color:#fff;
+    padding:10px 16px; border-radius:0 0 6px 0; font-size:13px; font-weight:600; text-decoration:none; }
+  .skip-link:focus{ left:0; }
+  a:focus-visible, button:focus-visible{ outline:3px solid #2b6cb0; outline-offset:2px; border-radius:4px; }
+  .top{ background:#fff; border-bottom:1px solid var(--line); }
+  .top .wrap{ max-width:760px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; }
+  .brand{ font-weight:800; letter-spacing:1.5px; text-transform:uppercase; font-size:16px; display:flex; align-items:center; gap:9px; color:inherit; text-decoration:none; }
+  .mark{ width:22px; height:22px; background:var(--ink); border-radius:5px; display:inline-flex; align-items:center; justify-content:center; }
+  .mark svg{ width:13px; height:13px; }
+  main{ max-width:760px; margin:0 auto; padding:40px 24px 80px; }
+  h1{ font-size:30px; letter-spacing:-.5px; margin:0 0 6px; }
+  .updated{ color:var(--muted); font-size:13px; margin-bottom:26px; }
+  h2{ font-size:19px; margin:34px 0 10px; }
+  p, li{ font-size:15px; color:#2a3f52; }
+  a{ color:var(--ink); font-weight:600; }
+  footer{ border-top:1px solid var(--line); padding:26px 0; text-align:center; color:var(--muted); font-size:13px; }
+  footer button{ background:none; border:none; font:inherit; color:inherit; cursor:pointer; text-decoration:underline; padding:0; }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<div class="top"><div class="wrap">
+  <a class="brand" href="/"><span class="mark"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7z" fill="#fff"/><circle cx="12" cy="9" r="2.4" fill="#102a43"/></svg></span> SignDeployer</a>
+  <a href="/privacy.html" style="font-size:13px;font-weight:600;">Privacy Policy →</a>
+</div></div>
+
+<main id="main-content" tabindex="-1">
+  <h1>Accessibility Statement</h1>
+  <div class="updated">Last updated: July 1, 2026</div>
+
+  <p>SignDeployer is committed to making its website and application usable by everyone,
+  including people who rely on assistive technologies. We aim to conform to the
+  <b>Web Content Accessibility Guidelines (WCAG) 2.1, Level AA</b>, and we treat
+  accessibility as an ongoing engineering responsibility, not a one-time project.</p>
+
+  <h2>What we've built in</h2>
+  <ul>
+    <li>Full keyboard operability — every control, including the sign-in dialog and the
+    cookie-preferences dialog, can be reached and operated without a mouse, with visible
+    focus indicators and correct focus management (focus trapping in dialogs, focus
+    return on close, Escape to dismiss).</li>
+    <li>"Skip to content" links, landmark regions, and a logical heading structure on
+    every page.</li>
+    <li>Labels or accessible names on all form fields, buttons, and interactive
+    controls; decorative graphics are hidden from screen readers.</li>
+    <li>Live-region announcements for search progress and errors in the app, so screen
+    reader users hear status changes.</li>
+    <li>Sign placement results presented as a <b>text list</b> (ranked spots with street
+    names and driving order) alongside the visual map, so the core output of the product
+    does not depend on seeing the map.</li>
+    <li>Color contrast chosen to meet WCAG AA, and animations disabled for visitors with
+    a "reduce motion" system preference.</li>
+    <li>Text that can be resized up to 200% without loss of functionality; no content
+    that flashes.</li>
+  </ul>
+
+  <h2>Known limitations</h2>
+  <p>The interactive map is rendered by a third-party engine (Mapbox GL) and is
+  inherently visual. Everything the map communicates — the recommended spots, their
+  ranking, and the driving order — is also provided as text in the results list, and the
+  driving directions can be opened in your own navigation app.</p>
+
+  <h2>Feedback and accommodations</h2>
+  <p>If you hit an accessibility barrier anywhere on this site, or you need any content
+  or function provided in an alternative format, please tell us:
+  <a href="mailto:hello@signdeployer.com?subject=Accessibility">hello@signdeployer.com</a>
+  (put "Accessibility" in the subject line). We aim to respond within <b>2 business
+  days</b> and to remediate verified barriers promptly. Your feedback will not affect
+  your account or pricing in any way.</p>
+
+  <h2>Enforcement and standards</h2>
+  <p>This statement applies to signdeployer.com and the SignDeployer application. We
+  assess new features against WCAG 2.1 AA before release and periodically re-audit
+  existing pages with keyboard-only navigation, screen readers, and automated tooling.</p>
+</main>
+
+<footer>© SignDeployer · <a href="/">Home</a> · <a href="/terms.html">Terms</a> · <a href="/privacy.html">Privacy</a> · <button type="button" data-sd-privacy-choices>Your Privacy Choices</button></footer>
+<script src="assets/js/consent.js"></script>
+</body>
+</html>
